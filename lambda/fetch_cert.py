@@ -95,7 +95,6 @@ def publish_s3(bucket, domain, cert):
 def handler(event, context):
     try:
         domain_name = os.environ['DOMAIN']
-        print domain_name
         if should_provision(domain_name):
             cert = provision_cert(os.environ['DOMAIN_EMAIL'], domain_name)
             publish_s3(os.environ['BUCKET'], domain_name, cert)
